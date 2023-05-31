@@ -16,6 +16,8 @@ def test_urlparse():
     with debugger.collect_fail():
         urlparse("http://aaaa.com#aaa#bbb;;;")
 
+    with debugger.collect_fail():
+        urlparse("http://aaaa.com/index.html?arg1=value1#aaa#bbb;;;")    
 
     line, dist = debugger.mostsimilarstmt(debugger.rank()[0])
 
