@@ -45,7 +45,20 @@ def test_urlparse():
 * R9.1. The distance should be computed only for the statements executed by at least one test case (passing or failing). If no test case executes a statement, you should ignore it.
 * R10. The Levenshtein distance shall be computed after stripping the statements.
 * R11. Installing new packages is not allowed. Shall assume that all packages are installed for `debuggingbook`.
+* R12. Use this `suspiciousness()` function:
+```
+def suspiciousness(self, event: Any) -> Optional[float]:
+        failed = len(self.collectors_with_event(event, self.FAIL))
+        not_in_failed = len(self.collectors_without_event(event, self.FAIL))
+        not_in_passed = len(self.collectors_without_event(event, self.PASS))
+        passed = len(self.collectors_with_event(event, self.PASS))
 
+        try:
+            # return failed / math.sqrt((failed + not_in_failed) * (failed + passed))
+            return 2*(failed + (not_in_passed / (passed + not_in_passed)))
+        except ZeroDivisionError:
+            return None
+```
 
 
 
