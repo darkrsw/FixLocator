@@ -31,14 +31,14 @@ def test_urlparse():
     with debugger.collect_fail():
         urlparse("http://aaaa.com#aaa#bbb;;;")
 
-    line, dist = debugger.mostsimilarstmt(target)
+    line, dist = debugger.mostsimilarstmt(debugger.rank()[0])
 
     assert ...
 ```
 
 * R7. This assignment assumes that you already have a `RankingDebugger`, `TarantulaDebugger`, or `OchiaiDebugger` class composed from `debuggingbook.org`.
 * R8. You have to add `line, dist = mostsimilarstmt(targetloc)` to your debugger class, where:
-   - `targetloc` -- A pair of (`function name`, `linu number`). A suspicious location in the target program. Usually, this is designated by `debugger.rank()[x]`
+   - `targetloc` -- A pair of (`function name`, `linu number`). A suspicious location in the target program. Usually, this is designated by `debugger.rank()[x]`.
    - `line` -- A string representing the most similar line with the statement at the `targetloc`. This should be a stripped string.
    - `dist` -- An integer value representing the Levenshtein distance between the statement at the `targetloc` and `line`.
 * R9. The return value of `mostsimilarstmt(targetloc)` shall avoid statements with `dist == 0` as the statements identical with the buggy statement are useless.
