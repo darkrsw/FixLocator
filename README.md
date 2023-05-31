@@ -67,5 +67,5 @@ def suspiciousness(self, event: Any) -> Optional[float]:
 * N1. `pytest` (based on `test_urlparse1.py`) is just for validating your program. The final grading will be made by other test cases.
 * N2. Submissions via GitHub Classroom will only be accepted. Submissions via LMS or any other means are not accepted.
 * N3. DO NOT change files in this repository except for `StatRepair.py`. Adding new files are allowed.
-* N4. Extra points (20%) are given if submitted within 30min.
+* N4. Extra points (20%) are given if submitted within 4:15pm.
 * N5. Late submissions after 4:15pm are allowed, but 20% of points will be discounted for every 30min. Thus, no point is given 150min after 4:15pm.
