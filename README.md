@@ -42,6 +42,7 @@ def test_urlparse():
    - `line` -- A string representing the most similar line with the statement at the `targetloc`. This should be a stripped string.
    - `dist` -- An integer value representing the Levenshtein distance between the statement at the `targetloc` and `line`.
 * R9. The return value of `mostsimilarstmt(targetloc)` shall avoid statements with `dist == 0` as the statements identical with the buggy statement are useless.
+* R9.1. The distance should be computed only for the statements executed by at least one test case (passing or failing). If no test case executes a statement, you should ignore it.
 * R10. The Levenshtein distance shall be computed after stripping the statements.
 * R11. Installing new packages is not allowed. Shall assume that all packages are installed for `debuggingbook`.
 
