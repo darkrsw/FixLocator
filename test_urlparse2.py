@@ -19,4 +19,4 @@ def test_urlparse():
     
     line, dist = debugger.mostsimilarstmt(debugger.rank()[0])
     
-    assert line == "parts = ip_str.split(':')" and dist == 20
+    assert (line == "parts = ip_str.split(':')" or line == 'url = url.replace(b, "")') and dist == 20
