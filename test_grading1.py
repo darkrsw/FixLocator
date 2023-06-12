@@ -84,21 +84,6 @@ def test_json1():
         except:
             pass
 
-
-
-    print(debugger.rank()[:10])
-
-    for idx in range(10):
-        print(debugger.suspiciousness(debugger.rank()[idx]))
-    # print(debugger.suspiciousness(debugger.rank()[0]))
-    # print(debugger.suspiciousness(debugger.rank()[1]))
-    # print(debugger.suspiciousness(debugger.rank()[2]))
-
     line, dist = debugger.mostsimilarstmt(debugger.rank()[0])
 
-    print(line, dist)
-
-
-
-if __name__ == '__main__':
-    test_json1()
+    assert line == "except StopIteration:" and dist == 5
