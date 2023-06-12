@@ -1,7 +1,9 @@
 class StatRepair
     def getStmt(self, tlocation):
         functions = self.covered_functions()
+
         stmt = ""
+        # print(tlocation[0], tlocation[1])
 
         for func in functions:
             try:
@@ -12,6 +14,8 @@ class StatRepair
 
                     for line in source_lines:
                         location = (func.__name__, line_number)
+                        # print(location)
+                        # location_suspiciousness = self.suspiciousness(location)
                         if location == tlocation:
                             stmt = line.strip()
                             break
@@ -20,13 +24,15 @@ class StatRepair
             except Exception as e:
                 continue
 
+
         return stmt
 
-
-
     def mostsimilarstmt(self, targetloc):
+
         target = self.getStmt(targetloc)
+
         functions = self.covered_functions()
+
         simmap = {}
 
         for func in functions:
@@ -34,6 +40,11 @@ class StatRepair
                 source_lines, starting_line_number = inspect.getsourcelines(func)
             except Exception as e:
                 continue
+
+            # if (function.__name__, starting_line_number) in simmap:
+            #     continue
+
+            # print(func)
 
             line_number = starting_line_number
 
@@ -45,7 +56,6 @@ class StatRepair
                     dist = levenshtein(target, line)
                     # print(dist, line)
                     simmap[line] = dist
-
                 line_number += 1
 
         sortedmap = dict(sorted(simmap.items(), key=lambda item: item[1]))
